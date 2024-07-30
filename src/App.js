@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import React, { useState } from 'react';
+import Navbar from './components/navbar/Navbar.jsx';
+import Header from './components/header/Header';
+import About from './components/about/About';
+import Services from './components/services/Services';
+import Projects from './components/projects/Projects';
+import Chat from './components/gemini/Chat';
+import InterfaceGemini from './components/gemini/Interface';
+import Contact from './components/contact/Contact';
+
+
 
 function App() {
+  const [showInterface, setShowInterface] = useState(false);
+  const url = "https://portfolio-backend-deploy.adaptable.app/";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       
+      <Chat showInterface={showInterface}  setShowInterface={setShowInterface} />
+      <InterfaceGemini showInterface={showInterface} setShowInterface={setShowInterface} url={url} />
+      <Navbar />
+      <Header />
+     
+     <About />
+     <Services />
+     <Projects />
+     <Contact url={url}/>
+    
     </div>
   );
 }
